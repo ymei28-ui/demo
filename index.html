@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>大学生健康饮食</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Helvetica Neue", Arial, sans-serif;
+        background: #f7f8f5;
+        color: #222;
+        line-height: 1.6;
+      }
+
+      header {
+        background: #ffffff;
+        border-bottom: 1px solid #e5e5e5;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav {
+        max-width: 1100px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 24px;
+      }
+
+      .logo {
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 20px;
+      }
+
+      .nav-links a {
+        text-decoration: none;
+        color: #333;
+        font-size: 0.95rem;
+      }
+
+      .nav-links a:hover {
+        color: #6d8b5a;
+      }
+
+      .hero {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 90px 24px 70px;
+        display: grid;
+        grid-template-columns: 1.2fr 0.8fr;
+        gap: 40px;
+        align-items: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+        margin-bottom: 18px;
+        color: #1f2a1f;
+      }
+
+      .hero p {
+        font-size: 1.05rem;
+        color: #555;
+        margin-bottom: 26px;
+        max-width: 620px;
+      }
+
+      .hero-buttons {
+        display: flex;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .btn {
+        display: inline-block;
+        text-decoration: none;
+        padding: 12px 22px;
+        border-radius: 999px;
+        font-size: 0.95rem;
+        transition: 0.25s ease;
+      }
+
+      .btn-primary {
+        background: #6d8b5a;
+        color: white;
+      }
+
+      .btn-primary:hover {
+        background: #5b7749;
+      }
+
+      .btn-secondary {
+        border: 1px solid #cfcfcf;
+        color: #333;
+        background: white;
+      }
+
+      .btn-secondary:hover {
+        border-color: #6d8b5a;
+        color: #6d8b5a;
+      }
+
+      .hero-card {
+        background: white;
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.06);
+      }
+
+      .hero-card h3 {
+        margin-bottom: 12px;
+        color: #1f2a1f;
+      }
+
+      .hero-card ul {
+        list-style: none;
+      }
+
+      .hero-card li {
+        padding: 10px 0;
+        border-bottom: 1px solid #eeeeee;
+        color: #555;
+      }
+
+      .hero-card li:last-child {
+        border-bottom: none;
+      }
+
+      section {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 70px 24px;
+      }
+
+      .section-title {
+        margin-bottom: 30px;
+      }
+
+      .section-title h2 {
+        font-size: 2rem;
+        margin-bottom: 10px;
+        color: #1f2a1f;
+      }
+
+      .section-title p {
+        color: #666;
+        max-width: 700px;
+      }
+
+      .video-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 24px;
+      }
+
+      .video-card,
+      .article-card {
+        background: white;
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+      }
+
+      .video-card iframe {
+        width: 100%;
+        height: 220px;
+        border: none;
+      }
+
+      .card-content {
+        padding: 20px;
+      }
+
+      .card-content h3 {
+        margin-bottom: 10px;
+        font-size: 1.15rem;
+        color: #222;
+      }
+
+      .card-content p {
+        color: #666;
+        font-size: 0.95rem;
+      }
+
+      .article-list {
+        display: grid;
+        gap: 22px;
+      }
+
+      .article-card {
+        padding: 28px;
+      }
+
+      .article-card h3 {
+        margin-bottom: 12px;
+        color: #1f2a1f;
+      }
+
+      .article-card p {
+        color: #555;
+        margin-bottom: 14px;
+      }
+
+      .tag {
+        display: inline-block;
+        background: #eef4ea;
+        color: #5b7749;
+        padding: 6px 12px;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        margin-bottom: 14px;
+      }
+
+      .about {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+        align-items: start;
+      }
+
+      .about-box {
+        background: white;
+        border-radius: 18px;
+        padding: 28px;
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+      }
+
+      footer {
+        text-align: center;
+        padding: 30px 20px 40px;
+        color: #777;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 850px) {
+        .hero,
+        .about {
+          grid-template-columns: 1fr;
+        }
+
+        .hero h1 {
+          font-size: 2.3rem;
+        }
+
+        .nav {
+          flex-direction: column;
+          gap: 12px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="nav">
+        <div class="logo">Healthy Campus Plate</div>
+        <nav class="nav-links">
+          <a href="#home">首页</a>
+          <a href="#videos">采访视频</a>
+          <a href="#articles">我的稿子</a>
+          <a href="#about">关于主题</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div>
+          <h1>大学生健康饮食</h1>
+          <p>
+            这是一个关注大学生日常饮食习惯的网站。你可以在这里看到我整理的采访视频，
+            也可以阅读我写的文章，了解大学生在忙碌学习生活中如何更健康地吃饭。
+          </p>
+          <div class="hero-buttons">
+            <a href="#videos" class="btn btn-primary">查看采访视频</a>
+            <a href="#articles" class="btn btn-secondary">阅读我的稿子</a>
+          </div>
+        </div>
+
+        <div class="hero-card">
+          <h3>网站内容</h3>
+          <ul>
+            <li>采访不同学生的真实饮食习惯</li>
+            <li>分享健康饮食的小建议</li>
+            <li>展示我写的主题稿件和思考</li>
+          </ul>
+        </div>
+      </section>
+
+      <section id="videos">
+        <div class="section-title">
+          <h2>采访视频</h2>
+          <p>
+            下面可以放你采访同学、朋友或老师的视频。现在先用了示例视频位置，你之后只需要替换链接。
+          </p>
+        </div>
+
+        <div class="video-grid">
+          <div class="video-card">
+            <iframe
+              src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+              title="采访视频 1"
+              allowfullscreen
+            ></iframe>
+            <div class="card-content">
+              <h3>采访视频 1</h3>
+              <p>
+                介绍一位大学生平时的早餐和晚餐习惯，以及他们对健康饮食的看法。
+              </p>
+            </div>
+          </div>
+
+          <div class="video-card">
+            <iframe
+              src="https://www.youtube.com/embed/ysz5S6PUM-U"
+              title="采访视频 2"
+              allowfullscreen
+            ></iframe>
+            <div class="card-content">
+              <h3>采访视频 2</h3>
+              <p>讨论课业压力下，大学生如何平衡方便、预算和营养之间的关系。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="articles">
+        <div class="section-title">
+          <h2>我的稿子</h2>
+          <p>
+            这里可以展示你写的文章、采访总结或专题分析。风格保持简洁，方便阅读。
+          </p>
+        </div>
+
+        <div class="article-list">
+          <article class="article-card">
+            <span class="tag">文章 01</span>
+            <h3>为什么大学生容易忽视健康饮食？</h3>
+            <p>
+              很多大学生的作息并不规律，常常因为赶作业、上课或社交而错过正常吃饭时间。
+              在这样的生活节奏下，方便和便宜往往比营养更重要，这也是健康饮食难以坚持的重要原因。
+            </p>
+            <p>
+              但健康饮食并不一定意味着复杂或者昂贵。对大学生来说，最现实的方法是从简单的小改变开始，
+              比如保证每天至少一顿相对均衡的正餐，减少高糖饮料，或者在宿舍准备一些更健康的零食。
+            </p>
+          </article>
+
+          <article class="article-card">
+            <span class="tag">文章 02</span>
+            <h3>采访后的观察：健康饮食不只是“吃得清淡”</h3>
+            <p>
+              在采访中，我发现很多学生对“健康饮食”的理解都不一样。有人觉得少油少盐就是健康，
+              有人则更在意是否能吃饱、是否有足够蛋白质，还有人最关心的是预算是否能承担。
+            </p>
+            <p>
+              这些不同的回答说明，大学生健康饮食其实和时间、经济状况、生活习惯都密切相关。
+              所以讨论这个主题时，不应该只讲理论上的“标准答案”，也要考虑学生真实的生活环境。
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="about">
+        <div class="section-title">
+          <h2>关于这个主题</h2>
+          <p>这个网站适合用来展示课程项目、采访作业或者个人主题研究成果。</p>
+        </div>
+
+        <div class="about">
+          <div class="about-box">
+            <h3>你可以继续添加的内容</h3>
+            <p>你后面可以继续加入：</p>
+            <p>• 更多采访视频</p>
+            <p>• 每篇文章的完整页面</p>
+            <p>• 联系方式或反馈表单</p>
+            <p>• 图片、数据图表或参考资料</p>
+          </div>
+
+          <div class="about-box">
+            <h3>如何替换成你自己的内容</h3>
+            <p>
+              视频部分：把 iframe 里的 YouTube 链接替换成你自己的视频链接。<br /><br />
+              文章部分：直接修改标题和段落文字，换成你自己写的稿子。<br /><br />
+              网站标题：把 “Healthy Campus Plate” 改成你想要的网站名字。
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© 2026 大学生健康饮食网站 | Designed in a simple style</p>
+    </footer>
+  </body>
+</html>
